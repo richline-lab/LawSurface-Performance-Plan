@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض فني ومالي - Law Surface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#020617',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                        },
+                        brand: {
+                            blue: '#0ea5e9',
+                            cyan: '#06b6d4',
+                            gold: '#f59e0b',
+                            indigo: '#6366f1',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #020617; 
+            color: #e2e8f0; 
+            scroll-behavior: smooth;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 25%);
+            overflow-x: hidden;
+        }
+
+        .glass-card { 
+            background: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(14, 165, 233, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15);
+        }
+
+        .section-title { 
+            position: relative; 
+            display: inline-block; 
+            margin-bottom: 3.5rem;
+            font-size: 2.25rem;
+            font-weight: 800;
+        }
+        .section-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -1rem; 
+            right: 0; 
+            width: 60px; 
+            height: 4px; 
+            background: linear-gradient(90deg, #0ea5e9, transparent); 
+            border-radius: 2px;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .check-list li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="relative min-h-[95vh] flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-blue/10 blur-[120px] rounded-full -z-10 animate-pulse-slow"></div>
+        
+        <!-- Logo Area (Reduced size for better quality) -->
+        <div class="relative group mb-10">
+            <div class="absolute inset-0 bg-brand-blue/20 blur-2xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <!-- Smaller container: w-32 h-32 on mobile, w-36 h-36 on desktop -->
+            <div class="relative w-32 h-32 md:w-36 md:h-36 rounded-[2rem] bg-navy-800 border border-white/10 flex items-center justify-center animate-float overflow-hidden shadow-2xl p-2">
+                 <img src="https://i.postimg.cc/j5wSxv94/imgi-1-Comp-1-1.gif" alt="Law Surface Logo" class="w-full h-full object-contain">
+            </div>
+        </div>
+        
+        <!-- Title Area -->
+        <div class="space-y-6 max-w-4xl relative z-10">
+            <div class="inline-block px-4 py-1.5 mb-2 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-xs font-bold tracking-widest uppercase">
+                إلى السيد: تركي بن سلطان
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-brand-blue tracking-tight leading-tight">
+                Law Surface
+            </h1>
+            <p class="text-2xl font-light text-slate-300">استراتيجية الحوسبة لتنقية المعلومات وإدارة الحملات</p>
+            
+            <div class="flex items-center justify-center gap-4 mt-4">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-brand-blue"></div>
+                <p class="text-brand-blue font-bold uppercase tracking-[0.2em] text-sm">عرض فني ومالي | Legal Tech Growth</p>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-brand-blue"></div>
+            </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="mt-16 flex flex-wrap justify-center gap-6 text-slate-400 text-xs font-bold uppercase">
+            <span class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-md">
+                <span class="text-brand-blue text-lg">🎯</span> هدفنا: Scaling المبيعات
+            </span>
+            <span class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-md">
+                <span class="text-brand-gold text-lg">⚡</span> الكفاءة: تنقية المعلومات ذكياً
+            </span>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 max-w-7xl space-y-40 pb-48">
+
+        <!-- Phase 1 & 2: Strategy & Foundations -->
+        <section class="reveal-on-scroll">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                <div>
+                    <span class="text-brand-blue font-bold tracking-wider text-sm block mb-2">PHASE 01 & 02</span>
+                    <h2 class="section-title !mb-0 text-white">الأساس الاستراتيجي والتحليل</h2>
+                </div>
+                <div class="max-w-xl bg-gradient-to-r from-brand-blue/10 to-transparent p-6 rounded-r-2xl border-r-4 border-brand-blue">
+                    <p class="text-sm text-slate-300 leading-relaxed italic">
+                        "النمو الحقيقي يبدأ من الفهم العميق للبيانات؛ Law Surface ليست مجرد منصة، بل هي حل قانوني تقني يحتاج استراتيجية اختراق دقيقة."
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="text-3xl mb-4">🔍</div>
+                    <h4 class="font-bold text-white mb-3 text-lg">تحليل SWOT</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">تحديد نقاط القوة (AI والدعم العربي) والفرص في سوق الـ Legal Tech المتنامي بالخليج.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="text-3xl mb-4">⚙️</div>
+                    <h4 class="font-bold text-white mb-3 text-lg">تحليل CRO</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">تحسين معدل التحويل وسد ثغرات "Drop-off" لضمان عدم ضياع أي عميل محتمل.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="text-3xl mb-4">👥</div>
+                    <h4 class="font-bold text-white mb-3 text-lg">استهداف المحترفين</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">الوصول المباشر للمحامين، مكاتب المحاماة، والإدارات القانونية الكبرى بناءً على السلوك المهني.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="text-3xl mb-4">🗺️</div>
+                    <h4 class="font-bold text-white mb-3 text-lg">رحلة العميل</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">رسم خارطة الطريق من رؤية الإعلان الأول وحتى الاشتراك الفعلي في المنصة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 3 & 4: Creative & Execution -->
+        <section class="reveal-on-scroll">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-brand-gold font-bold tracking-wider text-sm block mb-2">PHASE 03 & 04</span>
+                    <h2 class="section-title text-white">المحتوى وإطلاق الحملات</h2>
+                    <p class="text-slate-400 mb-8">نحول الميزات التقنية لـ Law Surface إلى فوائد ملموسة تقنع العميل وتدفعه لاتخاذ القرار.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">04</div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1">تصاميم إعلانية حصرية شهرياً</h5>
+                                <p class="text-xs text-slate-500">تصميمات تعكس هوية المنصة الفاخرة وتشرح الفائدة التقنية والعملية للعملاء.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-brand-blue/20 flex items-center justify-center text-brand-blue text-xl">✍️</div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1">كتابة المحتوى (Copywriting)</h5>
+                                <p class="text-xs text-slate-500">نصوص قانونية-تقنية تخاطب "نقاط الألم" لدى المحامين وتقدم الحل الذكي.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-brand-purple/20 flex items-center justify-center text-brand-purple text-xl">🌐</div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1">تغطية المنصات الشاملة</h5>
+                                <p class="text-xs text-slate-500">Google Ads, LinkedIn, X, Meta, Snapchat, TikTok بناءً على أعلى ROI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="glass-card rounded-[3rem] p-8 border-brand-blue/20 bg-navy-800/60 shadow-2xl">
+                        <h4 class="text-xl font-bold text-white mb-6 pr-4 border-r-4 border-brand-blue">الإعداد التقني للتتبع</h4>
+                        <ul class="space-y-4 text-sm text-slate-300 check-list">
+                            <li>ربط <strong>Google Tag Manager</strong> لتتبع كل نقرة.</li>
+                            <li>تثبيت كافة البكسلات (Meta, TikTok, Snapchat) لجمع البيانات.</li>
+                            <li>تتبع دقيق للـ Leads وتكلفة الاستحواذ (CPA).</li>
+                            <li>إعداد <strong>صفحة هبوط (Landing Page) مجانية</strong> احترافية مخصصة للحملات.</li>
+                        </ul>
+                        
+                        <div class="mt-10 pt-10 border-t border-white/5">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-brand-blue">دقة التتبع التقني</span>
+                                <span class="text-xs text-slate-500">100% Optimized</span>
+                            </div>
+                            <div class="w-full bg-navy-900 h-2 rounded-full overflow-hidden">
+                                <div class="bg-brand-blue h-full w-[95%] shadow-[0_0_10px_#0ea5e9]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-gold/20 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 5: Scaling & ROI -->
+        <section class="reveal-on-scroll">
+            <div class="text-center mb-16">
+                <span class="text-brand-purple font-bold tracking-widest text-sm uppercase">Phase 05</span>
+                <h2 class="text-4xl font-black text-white mt-2">التحسين المستمر والنمو (Scaling)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 rounded-[2.5rem] border-brand-purple/20 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-3xl mb-6">📊</div>
+                    <h4 class="text-white font-bold mb-4">تحليل البيانات الفعلي</h4>
+                    <p class="text-sm text-slate-400">قراءة الأداء الفعلي يومياً، إيقاف الإعلانات الضعيفة وتعزيز الإعلانات الرابحة فوراً.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[2.5rem] border-brand-purple/20 flex flex-col items-center text-center bg-gradient-to-b from-navy-800 to-navy-900">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-3xl mb-6">🔁</div>
+                    <h4 class="text-white font-bold mb-4">إعادة الاستهداف الذكي</h4>
+                    <p class="text-sm text-slate-400">ملاحقة زوار الموقع والمهتمين لزيادة احتمالية التحويل وتقليل تكلفة الاكتساب.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[2.5rem] border-brand-purple/20 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-3xl mb-6">🚀</div>
+                    <h4 class="text-white font-bold mb-4">Lookalike Audiences</h4>
+                    <p class="text-sm text-slate-400">بناء جمهور مشابه لعملائك الحاليين لزيادة المبيعات بنسبة متوقعة تصل لـ 30%.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="reveal-on-scroll">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-white uppercase tracking-widest">عرض السعر الاستراتيجي</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-brand-blue to-brand-gold mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="glass-card rounded-[3rem] overflow-hidden max-w-4xl mx-auto border border-white/10 shadow-[0_0_50px_-12px_rgba(14,165,233,0.2)]">
+                <div class="p-12">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                        <div>
+                            <h3 class="text-3xl font-black text-white">الباقة المتكاملة لـ Law Surface</h3>
+                            <p class="text-brand-blue font-bold mt-2">إدارة شاملة + حوسبة تنقية المعلومات</p>
+                        </div>
+                        <div class="bg-brand-blue/10 px-6 py-3 rounded-2xl border border-brand-blue/20">
+                            <span class="text-sm text-slate-400 block mb-1">المدة الزمنية</span>
+                            <span class="text-xl font-bold text-white">3 أشهر</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-12">
+                        <ul class="space-y-4 text-sm text-slate-300 check-list">
+                            <li>دراسة وتحليل المشروع + SWOT</li>
+                            <li>4 تصاميم إعلانية حصرية شهرياً</li>
+                            <li>كتابة المحتوى الإعلاني المخصص</li>
+                            <li>إعداد صفحة هبوط احترافية مجانية</li>
+                        </ul>
+                        <ul class="space-y-4 text-sm text-slate-300 check-list">
+                            <li>إدارة الحملات على جميع المنصات</li>
+                            <li>إعادة استهداف Retargeting</li>
+                            <li>مدير حساب شخصي ودعم 24/7</li>
+                            <li>تقارير شهرية مفصلة بالأرقام</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div class="text-right">
+                            <p class="text-xs text-slate-500 mb-2">* القيمة شاملة لإجمالي فترة الـ 3 أشهر</p>
+                            <p class="text-xs text-slate-500">* لا تشمل الميزانية الإعلانية المدفوعة للمنصات</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-slate-400 text-sm mb-1 uppercase font-bold tracking-widest">القيمة الإجمالية</p>
+                            <span class="text-5xl font-black text-brand-blue font-mono drop-shadow-[0_0_15px_rgba(14,165,233,0.4)]">4,500 ريال</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-white/5 pt-32 pb-16 px-6 relative">
+        <div class="container mx-auto text-center space-y-12">
+            <div class="flex flex-col items-center gap-6">
+                 <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                     <img src="https://i.ibb.co/XfxF1p9p/file.jpg" alt="Richline" class="rounded-xl">
+                 </div>
+                <div class="max-w-2xl">
+                    <h5 class="text-xl font-black text-white mb-4 italic">Richline Strategic Agency</h5>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        نحول الأهداف القانونية إلى أرقام تقنية، والرؤية إلى نمو مستدام.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-10 text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">
+                <a href="tel:+966549988810" class="hover:text-brand-blue transition-colors">CALL US</a>
+                <a href="https://wa.me/966549988810" class="hover:text-brand-blue transition-colors">WHATSAPP</a>
+                <a href="mailto:contact@richline.sa" class="hover:text-brand-blue transition-colors">EMAIL</a>
+            </div>
+
+            <div class="pt-12 border-t border-white/5">
+                <p class="text-[10px] text-slate-700 font-bold tracking-[0.4em]">
+                    POWERED BY RICHLINE AGENCY &copy; 2026
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
